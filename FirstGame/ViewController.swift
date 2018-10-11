@@ -7,19 +7,28 @@
 //
 
 import UIKit
+//import GoogleMobileAds
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabelValue: UILabel!
+    @IBOutlet weak var startGameButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        highScoreLabel.layer.cornerRadius = 5.0
+        startGameButton.layer.cornerRadius = 5.0
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let userDefaults = UserDefaults.standard
+        let value = userDefaults.string(forKey: "Record")
+        highScoreLabelValue.text = value != nil ? value : "0"
+        
     }
-
 
 }
 
